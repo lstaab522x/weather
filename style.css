@@ -34,8 +34,13 @@ padding-top: 0px;
 .main{background-color: brown;
 text-align: center;
 
-}
 
+}
+.maininfo{background-color: brown;
+    text-align: center;
+    display: grid;
+grid-gap: 1px;
+}
 
 .temp{font-size: 48px;}
 .info{display: grid;
@@ -46,17 +51,19 @@ text-align: center;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     width: 95vw;
-    height: 75px;
+    height: 150px;
     text-align: center;
     font-size: 24px;
   
     }
+    
+
     .bottom{
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr;
     grid-gap: 20px;
-    
+    margin-top: 0px;
     
     
 

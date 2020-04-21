@@ -5,47 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="keys.js"></script>
+    <script src="https://unpkg.com/@warnick/forecast-js/js/forecast.min.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/@warnick/forecast-js/css/forecast.css">
+
 </head>
 <body>
+    
+<div class="results" id="app">
+    
+    
+
 <div class="top">
     <div class="location info">
         <div class="zipcode">
-            <p>66535</p>
+            <input placeholder="Enter Your ZIP Code" 
+                    v-on:input="zip_trigger" 
+                    name="name" 
+                    id="zip" />
+            
         </div>
         <div class="citystate">
-            <p>Saint George, KS</p>
+            <p class="city">{{city}}</p>
         </div>
         <div class="Day">
-            <p>Sunday</p>
+            <p v-bind:class="time.day">{{time.day}}</p>
         </div>
         <div class="Date">
             <p>4-10-20</p>
         </div>
         <div class="Time">
-            <p>2:53
-            </p>
+            <p class="time">{{time.hour_12}}:{{time.minute}}:{{time.seconds}} {{time.ampm}}</p>
         </div>
     </div>
-    <div class="main info">
+    <div class="maininfo">
         <div class="Saturday">
-            <p>SATURDAY</p>
+            <p v-bind:class="time.day">{{time.day}}</p>
         </div>
         <div class="temp">
-            <p>65</p>
+            <p class="degree_symbol current">{{current.temp.current}}</p>
         </div>
         <div class="Temp range">
-            <p>High Low</p>
+            <span class="label">High</span>
+            <p class="degree_symbol high">{{current.temp.high}}</p>
+            <span class="label">Low</span>
+            <p class="degree_symbol low">{{current.temp.low}}</p>
         </div>
         <div class="percent">
-            <p>50%</p>
+            <span class="label">Cloud Coverage</span>
+            <p>{{forecast[0].precip}}</p>
         </div>
     </div>
     <div class="specifics">
         <div class="windspeed">
-            <p>Wind Speed</p>
+            <p class="windspeed">{{current.wind.speed}}</p>
         </div>
         <div class="Wind Direction">
-            <p>Wind Direction</p>
+            <p class="windir">{{current.wind.deg}}</p>
+
         </div>
         <div class="Humidity">
             <p>Humidity</p>
@@ -62,108 +79,129 @@
 <div class="bottom">
     <div class="box">
         <div class="Day">
-            <p>Sunday</p>
+            <p>{{forecast[1].weekday}}</p>
+            
         </div>
         <div class="Temp range">
-            <p>High Low</p>
+            <p  class="degree_symbol">High - {{forecast[1].max_temp}}</p>
+            <p  class="degree_symbol">Low - {{forecast[1].min_temp}}</p>
         </div>
         <div class="description">
             <p>Rain</p>
         </div>
         <div class="percent">
-            <p>50%</p>
+            
+            <div class="precipitation">
+                <p>{{forecast[1].precip}}</p>
+                <span class="likelihood">%</span>
+            </div>
+            
         </div>
     </div>
     <div class="box">
         <div class="Day">
-            <p>Sunday</p>
+            <p>{{forecast[2].weekday}}</p>
         </div>
         <div class="Temp range">
-            <p>High Low</p>
+            <p  class="degree_symbol">High - {{forecast[2].max_temp}}</p>
+            <p  class="degree_symbol">Low - {{forecast[2].min_temp}}</p>
         </div>
         <div class="description">
             <p>Rain</p>
         </div>
         <div class="percent">
-            <p>50%</p>
+            <p>{{forecast[2].precip}}</p>
+            
         </div>
     </div>
     <div class="box">
 
         <div class="Day">
-            <p>Sunday</p>
+            <p v-bind:class="time.day">{{time.day}}</p>
         </div>
         <div class="Temp range">
-            <p>High Low</p>
+            <p  class="degree_symbol">High - {{forecast[3].max_temp}}</p>
+            <p  class="degree_symbol">Low - {{forecast[3].min_temp}}</p>
         </div>
         <div class="description">
             <p>Rain</p>
         </div>
         <div class="percent">
-            <p>50%</p>
+            <p>{{forecast[3].precip}}</p>
         </div>
         
     </div>
         <div class="box">
         <div class="Day">
-            <p>Sunday</p>
+            <p v-bind:class="time.day">{{time.day}}</p>
         </div>
         <div class="Temp range">
-            <p>High Low</p>
+            <p  class="degree_symbol">High - {{forecast[4].max_temp}}</p>
+            <p  class="degree_symbol">Low - {{forecast[4].min_temp}}</p>
         </div>
         <div class="description">
             <p>Rain</p>
         </div>
         <div class="percent">
-            <p>50%</p>
+            <p>{{forecast[4].precip}}</p>
         </div>
     </div>
     <div class="box">
         <div class="Day">
-            <p>Sunday</p>
+            
+            <p v-bind:class="time.day">{{time.day}}</p>
         </div>
         <div class="Temp range">
-            <p>High Low</p>
+            <p  class="degree_symbol">High - {{forecast[5].max_temp}}</p>
+            <p  class="degree_symbol">Low - {{forecast[5].min_temp}}</p>
         </div>
         <div class="description">
             <p>Rain</p>
         </div>
         <div class="percent">
-            <p>50%</p>
-        </div>
-    </div>
-    <div class="box">
-
-        <div class="Day">
-            <p>Sunday</p>
-        </div>
-        <div class="Temp range">
-            <p>High Low</p>
-        </div>
-        <div class="description">
-            <p>Rain</p>
-        </div>
-        <div class="percent">
-            <p>50%</p>
+            <p>{{forecast[5].precip}}</p>
         </div>
     </div>
     <div class="box">
 
         <div class="Day">
-            <p>Sunday</p>
+            <p v-bind:class="time.day">{{time.day}}</p>
         </div>
         <div class="Temp range">
-            <p>High Low</p>
+            <p  class="degree_symbol">High - {{forecast[6].max_temp}}</p>
+            <p  class="degree_symbol">Low - {{forecast[6].min_temp}}</p>
         </div>
         <div class="description">
             <p>Rain</p>
         </div>
         <div class="percent">
-            <p>50%</p>
+            <p>{{forecast[6].precip}}</p>
+        </div>
+    </div>
+    <div class="box">
+
+        <div class="Day">
+            <p v-bind:class="time.day">{{time.day}}</p>
+        </div>
+        <div class="Temp range">
+            <p  class="degree_symbol">High - {{forecast[7].max_temp}}</p>
+            <p  class="degree_symbol">Low - {{forecast[7].min_temp}}</p>
+        </div>
+        <div class="description">
+            <p>Rain</p>
+        </div>
+        <div class="percent">
+            <p>{{forecast[7].precip}}</p>
+            
+                
+            
+            
+            
         </div>
     </div>
 
 </div>
+</div>    
 
 </body>
 </html>
