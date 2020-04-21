@@ -36,12 +36,19 @@ text-align: center;
 
 
 }
+.specifics{
+    font-size: 46px;
+}
 .maininfo{background-color: brown;
     text-align: center;
     display: grid;
 grid-gap: 1px;
 }
-
+.box{    text-align: center;
+    display: grid;
+grid-gap: 1px;
+}
+.day{margin-bottom: 500px;}
 .temp{font-size: 48px;}
 .info{display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr;}
